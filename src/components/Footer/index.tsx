@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components"
 
-import { AiOutlineGithub, FaLinkedin, BiGitRepoForked } from '../Icons'
+import { AiOutlineGithub, FaLinkedin, BiGitRepoForked } from '../../assets/Icons'
 
 const Container = styled.div`
   width: 100%;
@@ -30,7 +30,7 @@ const Container = styled.div`
   }
 `;
 
-const Footer = () => {
+export default function FooterComponent() {
   return (
     <Container>
       <Link href="https://github.com/jrsmarcilio">
@@ -45,5 +45,3 @@ const Footer = () => {
     </Container>
   )
 }
-
-export default Footer

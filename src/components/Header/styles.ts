@@ -1,16 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  width: 99.2vw;
-  height: auto;
-
-  img {
-    position: relative;
-    z-index: -1;
-  }
-`;
-
 export const Header = styled.div`
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 70px;
 
@@ -33,24 +25,6 @@ export const Header = styled.div`
   svg {
     width: 90px;
     margin-right: 20px;
-  }
-`;
-
-export const Navigation = styled.div`
-  display: flex;
-  z-index: +1;
-
-  a {
-    margin-left: 15px;
-    padding: 5px;
-    display: block;
-    font-size: 14px;
-    color: #fff;
-
-    :hover {
-      cursor: pointer;
-      color: #bfc1c1;
-    }
   }
 `;
 
@@ -84,6 +58,24 @@ export const SecondaryNavigation = styled.div`
 
     :hover {
       cursor: pointer;
+    }
+  }
+`;
+
+export const Navigation = styled.div`
+  display: flex;
+  z-index: +1;
+
+  a {
+    margin-left: 15px;
+    padding: 5px;
+    display: block;
+    font-size: 14px;
+    color: #fff;
+
+    :hover {
+      cursor: pointer;
+      color: #bfc1c1;
     }
   }
 `;

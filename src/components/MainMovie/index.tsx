@@ -1,30 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useContext } from "react";
 import Image from 'next/image';
-import { Box, Container, Grid, Typography } from "@material-ui/core";
-import { FaPlay } from "react-icons/fa";
 import MovieContext from "@/context/movie";
+import { useRouter } from "next/router";
+
+import { Box, Container, Grid, Typography, Modal } from "@material-ui/core";
+
+import { FaPlay } from "react-icons/fa";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
 import BrandCategory from "@/components/BrandCategory";
 import { BtnContained, BtnOutlined } from '@/styles/MaterialGuide'
 import { MainMovieContainer, BgWrapper } from './styles';
 import { IMovie } from '@/interface';
-import { AiOutlineInfoCircle } from "react-icons/ai";
 
 export default function MainMovie() {
-  const [mainMovie, setMainMovie] = useState<IMovie>();
-  const moviesData = React.useContext(MovieContext);
+  const [moviesPopular, setMoviesPopular] = useState<IMovie>();
+  const movieContext = useContext(MovieContext);
+  const router = useRouter();
 
   useEffect(() => {
-    const random = Math.floor(Math.random() * moviesData.movies.length - 1);
-    setMainMovie(moviesData.movies[random]);
-  }, [moviesData.movies]);
+    const random = Math.floor(
+      Math.random() * movieContext.moviesPopular.length - 1
+    );
+    setMoviesPopular(movieContext.moviesPopular[random]);
+  }, [movieContext.moviesPopular]);
+
+  const handleClickMoreInfor = () => {
+    router.push(`/movie/${moviesPopular?.id}`);
+  }
 
   return (
     <MainMovieContainer>
       <BgWrapper>
         <Image
-          src={`https://image.tmdb.org/t/p/original/${mainMovie?.backdrop_path}`}
-          alt={`backdrop image of ${mainMovie?.title}`}
+          src={`https://image.tmdb.org/t/p/original/${moviesPopular?.backdrop_path}`}
+          alt={`backdrop image of ${moviesPopular?.title}`}
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -35,7 +45,7 @@ export default function MainMovie() {
           <Grid item xs={6} container direction="column">
             <BrandCategory category='Filmes' />
             <Typography variant="h2" component="h2">
-              {mainMovie?.title}
+              {moviesPopular?.title}
             </Typography>
           </Grid>
           <Grid container direction="column" justifyContent="space-between">
@@ -45,7 +55,7 @@ export default function MainMovie() {
                 Assistir
               </BtnContained>
               <BtnOutlined variant="outlined">
-                <AiOutlineInfoCircle />
+                <AiOutlineInfoCircle onClick={handleClickMoreInfor} />
                 Mais Informações
               </BtnOutlined>
             </Grid>
@@ -53,7 +63,7 @@ export default function MainMovie() {
             >
               <Box width={100} height={50} bgcolor="rgba(51,51,51,.6)">
                 <Typography variant="button">
-                  {mainMovie?.adult ? '18' : '16'}
+                  {moviesPopular?.adult ? '18' : '16'}
                 </Typography>
               </Box>
             </Grid>

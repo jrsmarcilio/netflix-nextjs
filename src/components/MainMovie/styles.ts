@@ -2,11 +2,7 @@ import styled from "styled-components";
 
 export const MainMovieContainer = styled.div`
   height: 100vh;
-  background: linear-gradient(
-    77deg,
-    rgba(0, 0, 0, 0.6) 0,
-    rgba(0, 0, 0, 0) 85%
-  );
+  width: 100%;
 
   .MuiContainer-maxWidthXl {
     height: 93vh;
@@ -45,7 +41,7 @@ export const MainMovieContainer = styled.div`
 `;
 
 export const BgWrapper = styled.div`
-  position: fixed;
+  position: absolute;
   height: 100vh;
   width: 100vw;
   overflow: hidden;

@@ -1,14 +1,17 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import HeaderComponent from '@/components/Header'
 import MainMovieComponent from '@/components/MainMovie'
+import CarouselMovie from '@/components/CarouselMovie';
+import { HomeContent } from '@/styles/pages/home';
 
 export default function Home() {
   return (
-    <Fragment>
+    <HomeContent>
       <HeaderComponent />
       <MainMovieComponent />
-    </Fragment>
+      <CarouselMovie />
+    </HomeContent>
   );
 }
 

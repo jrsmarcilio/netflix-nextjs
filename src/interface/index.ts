@@ -1,19 +1,29 @@
+export interface IShowModal {
+  show: boolean;
+  onClose: () => void;
+  movie: IMovie | undefined;
+}
+
 export interface IMovieContext {
-  movies: IMovie[];
+  moviesPopular: IMovie[];
+  topRated: IMovie[];
+  upComing: IMovie[];
+  nowPlaying: IMovie[];
 }
 
 export interface IMovie {
-  id?: number;
-  adult?: boolean;
+  id: number;
+  adult: boolean;
   backdrop_path: string;
-  genre_ids?: number[];
+  genre_ids: number[];
   language: string;
-  originalTitle: string;
+  original_title: string;
   title: string;
   popularity: number;
-  posterPath: string;
+  poster_path: string;
   releaseDate: string;
   video: boolean;
-  voteAverage: number;
-  voteCount: number;
+  vote_average: number;
+  vote_count: number;
+  overview: string;
 }

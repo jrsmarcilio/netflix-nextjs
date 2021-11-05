@@ -62,7 +62,7 @@ export const SecondaryNavigation = styled.div`
   }
 `;
 
-export const Navigation = styled.div`
+export const PrimaryNavigation = styled.div`
   display: flex;
   z-index: +1;
 

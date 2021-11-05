@@ -1,43 +1,30 @@
-import Link from 'next/link'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import Avatar from '@/components/Avatar';
 
-import Avatar from '@/components/Avatar'
-
-import { ImSearch, IoMdNotificationsOutline, AiFillCaretDown } from '@/assets/Icons'
-import { Header, SecondaryNavigation, Navigation } from './styles';
+import { ImSearch, IoMdNotificationsOutline, AiFillCaretDown, NetflixLogo } from '@/assets/Icons'
+import { Header, SecondaryNavigation, PrimaryNavigation } from './styles';
+import { primaryNavigation } from '@/utils/mainLists';
 
 export default function HeaderComponent() {
+  const router = useRouter();
+  // const { query } = router.query;
+  // console.log('query', query);
+  const query = '/'
+
   return (
     <Header>
-      <Navigation>
-        <Link href="/">
-          <a>
-            {/* <NetflixLogo /> */}
-            Netflix
-          </a>
-        </Link>
+      <PrimaryNavigation>
+        <Link href="/"><a><NetflixLogo /></a></Link>
 
-        <strong>
-          <Link href="/inicio">
-            <a style={{ fontWeight: 'bold' }}>Início</a>
+        {primaryNavigation.map((nav, index) => (
+          <Link href={nav.url} key={index}>
+            <a style={{ fontWeight: query === nav.url ? 'bold' : 'normal' }}>
+              {nav.title}
+            </a>
           </Link>
-        </strong>
-
-        <Link href="/series">
-          <a> Séries </a>
-        </Link>
-
-        <Link href="/filmes">
-          <a> Filmes </a>
-        </Link>
-
-        <Link href="/bombando">
-          <a> Bombando </a>
-        </Link>
-
-        <Link href="/minha-lista">
-          <a> Minha lista </a>
-        </Link>
-      </Navigation>
+        ))}
+      </PrimaryNavigation>
 
       <SecondaryNavigation>
         <ImSearch />
